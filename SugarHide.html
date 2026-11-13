@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SugarHide</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;background:linear-gradient(135deg,#e8f5ff,#f4f0ff);font-family:Arial;color:#172033}
+
+.container{max-width:1100px;margin:auto;padding:20px}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 25px;background:white;border-radius:22px;box-shadow:0 8px 25px #8798b333}
+
+.logo{font-size:30px;font-weight:bold;color:#5141df}
+
+.logo span{color:#17a77b}
+
+nav a{margin-left:16px;color:#172033;text-decoration:none;font-weight:bold}
+
+nav a:hover{color:#5141df}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center;padding:60px 15px 40px}
+
+.hero h1{font-size:55px;line-height:1;margin:0 0 20px}
+
+.hero h1 span{color:#5141df}
+
+.hero p{color:#68758a;font-size:18px;line-height:1.5}
+
+.hero-card{padding:30px;min-height:240px;border-radius:30px;color:white;background:linear-gradient(135deg,#5141df,#8c7cff);box-shadow:0 12px 30px #5141df55}
+
+.button{display:inline-block;padding:14px 20px;margin-top:12px;border:0;border-radius:14px;color:white;background:#5141df;font-weight:bold;text-decoration:none;cursor:pointer}
+
+.button:hover{background:#392db9}
+
+section{margin:35px 0;scroll-margin-top:20px}
+
+.section-title{font-size:32px}
+
+.subtitle{color:#68758a}
+
+.catalog,.alternatives{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+.drink-card,.calculator,.result,.science-card,.alternative{padding:23px;border-radius:22px;background:white;box-shadow:0 8px 25px #8798b333}
+
+.drink-card{transition:.2s}
+
+.drink-card:hover{transform:translateY(-5px)}
+
+.icon{font-size:42px}
+
+.drink-card p,.science-card p{color:#68758a;line-height:1.5}
+
+.sugar{display:inline-block;padding:8px 12px;color:#d84451;background:#ffe1e5;border-radius:12px;font-weight:bold}
+
+.calculator-layout,.science{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+label{display:block;margin:15px 0 7px;font-weight:bold}
+
+select,input{width:100%;padding:14px;border:1px solid #d8deeb;border-radius:13px;font-size:16px}
+
+.calculate-button{width:100%;margin-top:20px}
+
+.result{display:none}
+
+.result.show{display:block}
+
+.result.warning{color:#b63240;background:#fff0f1;border:1px solid #ffb5bb}
+
+.result.safe{color:#147355;background:#eafff5;border:1px solid #a5e6cc}
+
+.big-number{display:block;margin:12px 0;font-size:38px;font-weight:bold}
+
+.progress{height:16px;margin:18px 0;background:#e8e8e8;border-radius:20px;overflow:hidden}
+
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#22b985,#f0ae39,#ee4d5b)}
+
+.spoons{margin-top:15px;font-size:23px;line-height:1.6}
+.experiment{margin-top:18px;padding:20px;border-radius:20px;background:#eaf7ff;border-left:6px solid #57aede}
+
+.alternatives{grid-template-columns:repeat(2,1fr)}
+
+.alternative{color:#176f53;background:#ddfaed}
+
+footer{margin-top:45px;padding:25px;text-align:center;color:#68758a;background:white;border-radius:20px}
+
+@media(max-width:750px){
+
+header{display:block}
+
+nav{margin-top:15px}
+
+nav a{display:inline-block;margin:5px 10px 5px 0}
+
+.hero,.calculator-layout,.science{grid-template-columns:1fr}
+
+.hero h1{font-size:42px}
+
+.catalog,.alternatives{grid-template-columns:1fr}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+
+<header>
+
+<div class="logo">Sugar<span>Hide</span> 🧃</div>
+
+<nav>
+
+<a href="#catalog">Каталог</a>
+
+<a href="#calculator">Калькулятор</a>
+
+<a href="#science">Эксперимент</a>
+
+<a href="#alternatives">Альтернативы</a>
+
+</nav>
+
+</header>
+
+
+
+<section class="hero">
+
+<div>
+
+<h1>Сахар, который<br><span>не спрячешь</span></h1>
+
+<p>Выбери напиток, укажи объём и узнай, сколько сахара содержится в твоей порции.</p>
+
+<a class="button" href="#calculator">Рассчитать сахар</a>
+
+</div>
+
+<div class="hero-card">
+
+<h2>Проверь свой напиток</h2>
+
+<p>SugarHide переводит граммы углеводов в чайные ложки и сравнивает результат с условным лимитом 25 г в день.</p>
+
+</div>
+
+</section>
+
+
+
+<section id="catalog">
+
+<h2 class="section-title">Каталог напитков</h2>
+
+<p class="subtitle">Содержание углеводов указано на 100 мл.</p>
+
+
+
+<div class="catalog">
+
+<div class="drink-card">
+
+<div class="icon">🧃</div>
+
+<h3>Яблочный сок</h3>
+
+<p>Данные с этикетки</p>
+
+<span class="sugar">11,5 г / 100 мл</span>
+
+</div>
+
+
+
+<div class="drink-card">
+
+<div class="icon">🥤</div>
+
+<h3>Кола</h3>
+
+<p>Газированный напиток</p>
+
+<span class="sugar">10,6 г / 100 мл</span>
+
+</div>
+
+
+
+<div class="drink-card">
+
+<div class="icon">☕</div>
+
+<h3>Холодный чай</h3>
+
+<p>Данные с этикетки</p>
+
+<span class="sugar">4,6 г / 100 мл</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="calculator">
+
+<h2 class="section-title">Калькулятор сахаронагрузки</h2>
+
+<p class="subtitle">В одной чайной ложке примерно 4 г сахара.</p>
+
+
+
+<div class="calculator-layout">
+
+<div class="calculator">
+
+<label for="drink">Выберите напиток:</label>
+
+<select id="drink">
+
+<option value="11.5">Яблочный сок</option>
+
+<option value="10.6">Кола</option>
+
+<option value="4.6">Холодный чай</option>
+
+</select>
+
+
+
+<label for="volume">Объём напитка, мл:</label>
+
+<input id="volume" type="number" value="500" min="1">
+
+
+
+<button class="button calculate-button" onclick="calculateSugar()">Рассчитать сахаронагрузку</button>
+
+</div>
+
+
+
+<div class="result" id="result">
+
+<b>РЕЗУЛЬТАТ:</b>
+
+<span class="big-number" id="grams">0 г</span>
+
+<span id="spoons">0 чайных ложек</span>
+
+<div class="spoons" id="spoonIcons"></div>
+
+<p>Условная рекомендация: максимум 25 г в день.</p>
+
+<div class="progress"><div class="progress-fill" id="progress"></div></div>
+
+<b id="percent"></b>
+
+<p id="message"></p>
+
+</div>
+
+</div>
+
+</section>
+<section id="science">
+
+<h2 class="section-title">Научное обоснование</h2>
+
+
+
+<div class="science">
+
+<div class="science-card">
+
+<h3>Как работает расчёт?</h3>
+
+<p>На этикетке указано содержание углеводов на 100 мл.</p>
+
+<p><b>Граммы = значение на 100 мл × объём / 100</b></p>
+
+<p>Затем граммы делятся на 4, чтобы получить примерное количество чайных ложек.</p>
+
+</div>
+
+
+
+<div class="science-card">
+
+<h3>Лабораторный эксперимент</h3>
+
+<p>При выпаривании воды из напитка остаётся сухой остаток.</p>
+
+<p>Он может содержать не только сахар, но и кислоты, красители и экстракты.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="experiment">
+
+<h3>Пример: яблочный сок, 500 мл</h3>
+
+<p>11,5 × 500 / 100 = <b>57,5 г углеводов</b></p>
+
+<p>57,5 / 4 ≈ <b>14,4 чайной ложки</b></p>
+
+</div>
+
+</section>
+
+
+
+<section id="alternatives">
+
+<h2 class="section-title">Здоровые альтернативы 🌱</h2>
+
+<div class="alternatives">
+
+<div class="alternative">
+
+<h3>🍋 Вода с лимоном и мятой</h3>
+
+<p>Освежающий напиток без добавленного сахара.</p>
+
+</div>
+
+<div class="alternative">
+
+<h3>🍓 Домашний морс</h3>
+
+<p>Количество сахара можно уменьшить или не добавлять.</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+<b>SugarHide</b> — сначала узнай, потом выбирай.<br>
+
+Учебный проект о содержании сахара в напитках.
+
+</footer>
+
+
+
+</div>
+
+
+
+<script>
+
+function calculateSugar(){
+
+const sugarPer100=Number(document.getElementById("drink").value);
+
+const volume=Number(document.getElementById("volume").value);
+
+
+
+if(!volume||volume<=0){
+
+alert("Введите объём напитка больше нуля.");
+
+return;
+
+}
+
+
+
+const sugar=sugarPer100*volume/100;
+
+const spoons=sugar/4;
+
+const limit=25;
+
+const percent=sugar/limit*100;
+
+const exceeded=percent-100;
+
+
+
+const result=document.getElementById("result");
+
+result.className="result show";
+
+
+
+document.getElementById("grams").textContent=sugar.toFixed(1)+" г углеводов";
+
+document.getElementById("spoons").textContent="≈ "+spoons.toFixed(1)+" чайных ложек";
+
+document.getElementById("spoonIcons").textContent="🥄".repeat(Math.min(Math.round(spoons),30));
+
+document.getElementById("progress").style.width=Math.min(percent,100)+"%";
+
+
+
+if(exceeded>0){
+
+result.classList.add("warning");
+
+document.getElementById("percent").textContent="Лимит превышен на "+exceeded.toFixed(0)+"%.";
+
+document.getElementById("message").textContent="Количество углеводов выше условного ориентира 25 г.";
+
+}else{
+
+result.classList.add("safe");
+
+document.getElementById("percent").textContent=percent.toFixed(0)+"% от условного ориентира.";
+
+document.getElementById("message").textContent="Количество углеводов не превышает выбранный ориентир.";
+
+}
+
+
+
+result.scrollIntoView({behavior:"smooth",block:"nearest"});
+
+}
+
+</script>
+
+</body>
+
+</html>
